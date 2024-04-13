@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { useFormik } from "formik";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
@@ -9,6 +8,7 @@ import logo from "@/assets/logo.svg";
 import mascot from "@/assets/mascot.png";
 import { Mail } from "lucide-react";
 import { Lock } from "lucide-react";
+import axios from "axios";
 
 export default function Login() {
   const userSchema = z.object({
@@ -42,6 +42,12 @@ export default function Login() {
         password: values.password,
       };
       console.log(send);
+      try{
+        const response = await axios.post("https://yantra-hack.onrender.com/login", send);
+        console.log(response);
+      } catch (e){
+        console.log(e)
+      }
     },
   });
 
@@ -50,7 +56,7 @@ export default function Login() {
 
   return (
     <div className="bg-white h-screen flex">
-      <div className="w-[65%] 2xl:w-[50%]">
+      <div className="w-full lg:w-[65%] 2xl:w-[50%]">
         <Image src={logo} alt="logo" className="mt-8 ml-8" />
         <div className="h-[80%] flex flex-col justify-center mx-52">
           <h1 className="text-3xl text-black font-semibold pb-6">Sign in</h1>
@@ -120,7 +126,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div className="flex w-[40%]">
+      <div className="hidden lg:flex w-[40%]">
         <Image src={mascot} alt="mascot" className="py-4 px-3 h-full w-fit" />
       </div>
     </div>

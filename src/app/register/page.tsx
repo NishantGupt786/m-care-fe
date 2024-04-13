@@ -8,8 +8,10 @@ import Link from "next/link";
 import logo from "@/assets/logo.svg";
 import mascot from "@/assets/mascot.png";
 import { Mail, Lock, UserRound, Phone } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+    const Router = useRouter();
   const userSchema = z
     .object({
       name: z.string({
@@ -58,6 +60,10 @@ export default function Register() {
     validationSchema: toFormikValidationSchema(userSchema),
     validateOnChange: true,
     onSubmit: async (values) => {
+        localStorage.setItem("name", values.name);
+        localStorage.setItem("email", values.email);
+        localStorage.setItem("password", values.password);
+        localStorage.setItem("phoneNo", values.phoneNo);
       const send = {
         name: values.name,
         email: values.email,
@@ -65,6 +71,7 @@ export default function Register() {
         phoneNo: values.phoneNo,
       };
       console.log(send);
+      Router.push("/register-2");
     },
   });
 
@@ -73,7 +80,7 @@ export default function Register() {
 
   return (
     <div className="bg-white min-h-screen flex">
-      <div className="w-[65%]">
+      <div className="w-full lg:w-[65%] 2xl:w-[50%]">
         <Image src={logo} alt="logo" className="mt-8 ml-8" />
         <div className="h-[80%] flex flex-col justify-center mx-52">
           <div className="flex justify-between items-center pb-6">
@@ -209,7 +216,7 @@ export default function Register() {
           </form>
         </div>
       </div>
-      <div className="flex w-[40%]">
+      <div className="hidden lg:flex w-[40%]">
         <Image src={mascot} alt="mascot" className="py-4 px-3 h-full w-fit" />
       </div>
     </div>
