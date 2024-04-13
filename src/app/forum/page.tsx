@@ -41,8 +41,7 @@ export default function Forum() {
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             {/* <Link href="/forum">Forum</Link> */}
-            <Link href="">Get Help</Link>
-            <Link href="">FAQ</Link>
+            
           </div>
           <Image src={prof} alt="profile icon" />
         </div>

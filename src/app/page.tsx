@@ -133,7 +133,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div className="hidden lg:flex w-[40%] 2xl:w-[50%]">
+      <div className="hidden lg:flex w-[40%] 2xl:w-[55%]">
         <Image src={mascot} alt="mascot" className="py-4 px-3 h-full w-fit" />
       </div>
     </div>

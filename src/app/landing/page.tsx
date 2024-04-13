@@ -17,14 +17,13 @@ export default function Landing() {
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             <Link href="/forum">Forum</Link>
-            <Link href="">Get Help</Link>
-            <Link href="">FAQ</Link>
+            
           </div>
           <Link href="/accountinfo">
             <Image src={prof} alt="profile icon" />
           </Link>
         </div>
-        <div className="w-screen banner h-[430px] mt-4 flex flex-col justify-center">
+        <div className="min-w-screen banner h-[430px] mt-4 flex flex-col justify-center">
           <div className="px-24 w-[55%]">
             <h1 className="text-4xl font-bold py-6">
               Give Yourself the Best Care!
