@@ -50,7 +50,7 @@ export default function Login() {
 
   return (
     <div className="bg-white h-screen flex">
-      <div className="w-[65%]">
+      <div className="w-[65%] 2xl:w-[50%]">
         <Image src={logo} alt="logo" className="mt-8 ml-8" />
         <div className="h-[80%] flex flex-col justify-center mx-52">
           <h1 className="text-3xl text-black font-semibold pb-6">Sign in</h1>
