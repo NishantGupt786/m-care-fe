@@ -55,7 +55,7 @@ export default function Login() {
         <div className="h-[80%] flex flex-col justify-center mx-52">
           <h1 className="text-3xl text-black font-semibold pb-6">Sign in</h1>
           <p className="text-black text-sm">
-            If you don't have an account{" "}
+            If you don&apos;t have an account{" "}
             <Link href="/register">
               <span className="text-[#0C21C1] underline text-sm">
                 {" "}
