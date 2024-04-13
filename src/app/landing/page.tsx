@@ -23,7 +23,7 @@ export default function Landing() {
             <Image src={prof} alt="profile icon" />
           </Link>
         </div>
-        <div className="min-w-screen banner h-[430px] mt-4 flex flex-col justify-center">
+        <div className="w-screen banner h-[430px] mt-4 flex flex-col justify-center">
           <div className="px-24 w-[55%]">
             <h1 className="text-4xl font-bold py-6">
               Give Yourself the Best Care!
