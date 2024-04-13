@@ -78,7 +78,7 @@ export default function Landing() {
             </div>
             <div className="flex gap-x-5 2xl:gap-x-10 w-full mt-6">
               <div className="flex flex-col w-[30%]">
-                <h1 className="text-4xl font-bold">10 lakh+</h1>
+                <h1 className="text-4xl font-bold">1 in 3</h1>
                 <p>
                   expectant mothers reaching out to us seek support for managing
                   anxiety or emotional challenges. You&apos;re not alone on this
@@ -86,14 +86,14 @@ export default function Landing() {
                 </p>
               </div>
               <div className="flex flex-col w-[30%]">
-                <h1 className="text-4xl font-bold">300+</h1>
+                <h1 className="text-4xl font-bold">10 lakh+</h1>
                 <p>
                   conversations have been participated in by users with out
                   chatbot.
                 </p>
               </div>
               <div className="flex flex-col w-[30%]">
-                <h1 className="text-4xl font-bold">1 in 3</h1>
+                <h1 className="text-4xl font-bold">300+</h1>
                 <p>
                   connections forged with local services, such as prenatal care
                   counseling hotlines, to provide a wide range of support
