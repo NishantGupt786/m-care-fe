@@ -73,25 +73,33 @@ export default function MakePost() {
           </div>
           <Image src={prof} alt="profile icon" />
         </div>
-        <div className="georgia flex flex-col items-center mt-8">
-          <div className="text-4xl">
-            <label>Title:</label>
-            <input type="text" value={title} onChange={handleTitleChange} />
+        <div className="georgia flex flex-col items-center my-8">
+          <div className="text-4xl w-[600px] mb-4">
+            
+            <input type="text" value={title} onChange={handleTitleChange} placeholder="Title" />
           </div>
-          <div>
+          <div className="border-2 border-black rounded-md">
             <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="w-[400px] h-[300px]"
+              className="w-[600px] h-[300px]"
             />
           </div>
-          <div>
-            <label>Description:</label>
-            <textarea value={description} onChange={handleDescriptionChange} />
+          <div className="flex flex-col w-[600px] mt-4">
+            
+            <textarea
+              value={description}
+              rows={5}
+              onChange={handleDescriptionChange}
+              className="text-2xl"
+              placeholder="Tell us your story"
+            />
           </div>
 
-          <button onClick={handleSubmit}>Submit</button>
+          <button onClick={handleSubmit} className="bg-[#0C21C1] py-2 px-4 mt-4 rounded-lg text-white">
+            Submit
+          </button>
         </div>
       </div>
     </>
