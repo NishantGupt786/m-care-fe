@@ -5,6 +5,7 @@ import logo from "@/assets/logo.svg";
 import prof from "@/assets/profico.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { NotebookPen } from "lucide-react";
 
 interface ForumResponse {
   title: string;
@@ -41,12 +42,19 @@ export default function Forum() {
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             {/* <Link href="/forum">Forum</Link> */}
-            
           </div>
           <Image src={prof} alt="profile icon" />
         </div>
         <div className="flex flex-col mx-auto mt-12">
-          <h1 className="text-3xl font-semibold">Welcome to Our Forum!</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-semibold">Welcome to Our Forum!</h1>
+            <Link href="/make-post">
+              <span className="flex gap-x-2">
+                <span>Write a post </span>
+                <NotebookPen color="#1024C2" />
+              </span>
+            </Link>
+          </div>
           <p className="text-[#00000066]">
             Join our supportive forum for expert advice, shared experiences, and
             a caring community

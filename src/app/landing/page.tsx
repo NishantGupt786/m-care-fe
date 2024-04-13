@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.svg";
@@ -6,8 +7,11 @@ import icon1 from "@/assets/icon1.svg";
 import icon2 from "@/assets/icon2.svg";
 import icon3 from "@/assets/icon3.svg";
 import banner2icon from "@/assets/banner2icon.png";
+import ReactSimplyCarousel from "react-simply-carousel";
+import { useState } from "react";
 
 export default function Landing() {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   return (
     <>
       <div className="flex flex-col bg-white min-h-screen overflow-x-hidden">
@@ -17,7 +21,6 @@ export default function Landing() {
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             <Link href="/forum">Forum</Link>
-            
           </div>
           <Link href="/accountinfo">
             <Image src={prof} alt="profile icon" />
@@ -70,7 +73,7 @@ export default function Landing() {
         <div className="bg-[#0C21C1CC] flex w-full pb-12">
           <Image src={banner2icon} alt="logo" className="" />
           <div className="flex flex-col">
-            <div className="flex flex-col w-[65%]">
+            <div className="flex flex-col w-[93%]">
               <h1 className="text-3xl font-bold">Prioritize your health </h1>
               <p className="text-xl py-5 border-b-[1px] border-[#000000CC] w-full">
                 Take the first step.
@@ -102,6 +105,97 @@ export default function Landing() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col items-center justify-center my-8">
+          <Image src={logo} alt="logo" />
+          <ReactSimplyCarousel
+            activeSlideIndex={activeSlideIndex}
+            onRequestChange={setActiveSlideIndex}
+            itemsToShow={1}
+            itemsToScroll={1}
+            autoplay={true}
+            autoplayDelay={5}
+            dotsNav={{
+              show: true,
+              itemBtnProps: {
+                style: {
+                  height: 8,
+                  width: 8,
+                  borderRadius: "50%",
+                  border: 0,
+                  background: "#00000066",
+                  marginRight: "8px",
+                },
+              },
+              activeItemBtnProps: {
+                style: {
+                  height: 8,
+                  width: 8,
+                  borderRadius: "50%",
+                  border: 0,
+                  background: "#0C21C1",
+                  marginRight: "8px",
+                },
+              },
+            }}
+            responsiveProps={[
+              {
+                itemsToShow: 1,
+                itemsToScroll: 1,
+                minWidth: 768,
+              },
+            ]}
+            speed={400}
+            easing="linear"
+          >
+            {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
+
+            <div
+              style={{ width: 1000, height: 300, background: "white" }}
+              className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
+            >
+              <h1 className="text-4xl ">
+                "The community aspect of this app is fantastic! Connecting with
+                other moms-to-be and sharing experiences has been both
+                comforting and empowering."
+              </h1>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+            </div>
+            <div
+              style={{ width: 1000, height: 300, background: "white" }}
+              className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
+            >
+              <h1 className="text-4xl ">
+                "The community aspect of this app is fantastic! Connecting with
+                other moms-to-be and sharing experiences has been both
+                comforting and empowering."
+              </h1>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+            </div>
+            <div
+              style={{ width: 1000, height: 300, background: "white" }}
+              className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
+            >
+              <h1 className="text-4xl ">
+                "The community aspect of this app is fantastic! Connecting with
+                other moms-to-be and sharing experiences has been both
+                comforting and empowering."
+              </h1>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+            </div>
+            <div
+              style={{ width: 1000, height: 300, background: "white" }}
+              className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
+            >
+              <h1 className="text-4xl ">
+                "The community aspect of this app is fantastic! Connecting with
+                other moms-to-be and sharing experiences has been both
+                comforting and empowering."
+              </h1>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+            </div>
+            
+          </ReactSimplyCarousel>
         </div>
       </div>
     </>
