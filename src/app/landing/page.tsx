@@ -155,46 +155,53 @@ export default function Landing() {
               className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
             >
               <h1 className="text-4xl ">
-                "The community aspect of this app is fantastic! Connecting with
-                other moms-to-be and sharing experiences has been both
-                comforting and empowering."
+                &quot;The community aspect of this app is fantastic! Connecting
+                with other moms-to-be and sharing experiences has been both
+                comforting and empowering.&quot;
               </h1>
-              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
+                Karan Dugar
+              </div>
             </div>
             <div
               style={{ width: 1000, height: 300, background: "white" }}
               className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
             >
               <h1 className="text-4xl ">
-                "The community aspect of this app is fantastic! Connecting with
-                other moms-to-be and sharing experiences has been both
-                comforting and empowering."
+                &quot;The community aspect of this app is fantastic! Connecting
+                with other moms-to-be and sharing experiences has been both
+                comforting and empowering.&quot;
               </h1>
-              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
+                Karan Dugar
+              </div>
             </div>
             <div
               style={{ width: 1000, height: 300, background: "white" }}
               className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
             >
               <h1 className="text-4xl ">
-                "The community aspect of this app is fantastic! Connecting with
-                other moms-to-be and sharing experiences has been both
-                comforting and empowering."
+                &quot;The community aspect of this app is fantastic! Connecting
+                with other moms-to-be and sharing experiences has been both
+                comforting and empowering.&quot;
               </h1>
-              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
+                Karan Dugar
+              </div>
             </div>
             <div
               style={{ width: 1000, height: 300, background: "white" }}
               className=" text-black text-center flex flex-col justify-center items-center gap-y-8"
             >
               <h1 className="text-4xl ">
-                "The community aspect of this app is fantastic! Connecting with
-                other moms-to-be and sharing experiences has been both
-                comforting and empowering."
+                &quot;The community aspect of this app is fantastic! Connecting
+                with other moms-to-be and sharing experiences has been both
+                comforting and empowering.&quot;
               </h1>
-              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">Karan Dugar</div>
+              <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
+                Karan Dugar
+              </div>
             </div>
-            
           </ReactSimplyCarousel>
         </div>
       </div>
