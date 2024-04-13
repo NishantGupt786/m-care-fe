@@ -60,12 +60,15 @@ export default function Register2() {
         q3: values.q3,
       };
       console.log(send);
-      try{
-        const response = await axios.post("https://yantra-hack.onrender.com/signup", send);
+      try {
+        const response = await axios.post(
+          "https://yantra-hack.onrender.com/signup",
+          send
+        );
         console.log(response);
-        Router.push("/dashboard");
-      } catch (e){
-        console.log(e)
+        Router.push("/");
+      } catch (e) {
+        console.log(e);
       }
     },
   });
@@ -187,7 +190,6 @@ export default function Register2() {
                 />
               </div>
             </div>
-            
 
             <button
               type="submit"

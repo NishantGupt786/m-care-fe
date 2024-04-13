@@ -45,6 +45,7 @@ export default function Login() {
       try{
         const response = await axios.post("https://yantra-hack.onrender.com/login", send);
         console.log(response);
+        localStorage.setItem("access_token", response.data.accessToken)
       } catch (e){
         console.log(e)
       }
