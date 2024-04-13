@@ -15,7 +15,7 @@ export default function Account() {
         <div className="flex justify-between mt-6 mx-6">
           <Image src={logo} alt="logo" />
           <div className="flex gap-x-8 text-gray-900">
-            <Link href="">Home</Link>
+            <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             <Link href="/forum">Forum</Link>
             <Link href="">Get Help</Link>

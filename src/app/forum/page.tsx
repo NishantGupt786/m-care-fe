@@ -38,7 +38,7 @@ export default function Forum() {
         <div className="flex justify-between mt-6 mx-6">
           <Image src={logo} alt="logo" />
           <div className="flex gap-x-8 text-gray-900">
-            <Link href="">Home</Link>
+            <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             {/* <Link href="/forum">Forum</Link> */}
             <Link href="">Get Help</Link>
@@ -69,7 +69,7 @@ export default function Forum() {
                   <h2 className="text-2xl font-semibold">{post.title}</h2>
                 </Link>
 
-                <p className="font-light">{post.desc}</p>
+                <p className="font-light georgia">{post.desc}</p>
 
                 {/* {post.image && (
                   <div className="mt-2">

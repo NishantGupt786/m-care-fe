@@ -6,11 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.svg";
 import mascot from "@/assets/mascot.png";
-import { Mail } from "lucide-react";
+import { Mail, Route } from "lucide-react";
 import { Lock } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const Router = useRouter();
   const userSchema = z.object({
     email: z
       .string({
@@ -42,13 +44,16 @@ export default function Login() {
         password: values.password,
       };
       console.log(send);
-      try{
-        const response = await axios.post("https://yantra-hack.onrender.com/login", send);
+      try {
+        const response = await axios.post(
+          "https://yantra-hack.onrender.com/login",
+          send
+        );
         console.log(response);
-        localStorage.setItem("access_token", response.data.accessToken)
-        
-      } catch (e){
-        console.log(e)
+        localStorage.setItem("access_token", response.data.accessToken);
+        Router.push("/forum");
+      } catch (e) {
+        console.log(e);
       }
     },
   });
@@ -128,7 +133,7 @@ export default function Login() {
           </form>
         </div>
       </div>
-      <div className="hidden lg:flex w-[40%]">
+      <div className="hidden lg:flex w-[40%] 2xl:w-[50%]">
         <Image src={mascot} alt="mascot" className="py-4 px-3 h-full w-fit" />
       </div>
     </div>

@@ -67,3 +67,17 @@ input:focus{
 
   /* Rounded corners */
 }
+
+@font-face {
+  font-family: "georgia";
+  src: url("./../../public/Georgia.ttf");
+}
+
+.georgia{
+  font-family: "georgia";
+}
+
+.banner{
+  background-image: url("./../assets/banner.png");
+  background-size:auto ;
+}
