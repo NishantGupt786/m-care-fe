@@ -1,27 +1,101 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Pencil } from "lucide-react";
+import { Pencil, Check } from "lucide-react";
+
+interface profResponse {
+  name: string;
+  email: string;
+  phoneNo: string;
+  isVerified: boolean;
+  dob: string;
+  q1: boolean;
+  q2: boolean;
+  q3: string;
+}
 
 export default function PerInfo() {
-  //   const [details, setDetails] = useState(null);
-  const [pregnant, setPregnant] = useState("no");
-  const [pregInput, togglePregInput] = useState(false);
-  const [child, setChild] = useState("no");
-  const [childInput, toggleChildInput] = useState(false);
-  const [num, setNum] = useState("0");
-  const [numInput, toggleNumInput] = useState(false);
-  //   useEffect(() => {
-  //     const access_token: string | null = localStorage.getItem("access_token");
-  //     async function getDetails() {
-  //       const response = await axios.get("damn", {
-  //         headers: {
-  //           Authorization: `Bearer ${access_token}`,
-  //         },
-  //       });
-  //       setDetails(response.data)
-  //     }
-  //   }, []);
+  const [pregnant, setPregnant] = useState<string>("");
+  const [pregInput, togglePregInput] = useState<boolean>(false);
+  const [child, setChild] = useState<string>("");
+  const [childInput, toggleChildInput] = useState<boolean>(false);
+  const [num, setNum] = useState<string | undefined>("");
+  const [numInput, toggleNumInput] = useState<boolean>(false);
+
+  useEffect(() => {
+    const access_token: string | null = localStorage.getItem("access_token");
+    async function getDetails() {
+      try {
+        const response = await axios.get(
+          "https://yantra-hack.onrender.com/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
+        console.log(response.data);
+        setPregnant(response.data.q1 ? "yes" : "no");
+        setChild(response.data.q2 ? "yes" : "no");
+        setNum(response.data.q3);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getDetails();
+  }, []);
+
+  async function editq1() {
+    const access_token: string | null = localStorage.getItem("access_token");
+    try {
+      const response = await axios.patch(
+        "https://yantra-hack.onrender.com/profile",
+        { q1: pregnant },
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      togglePregInput(false)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async function editq2() {
+    const access_token: string | null = localStorage.getItem("access_token");
+    try {
+      const response = await axios.patch(
+        "https://yantra-hack.onrender.com/profile",
+        { q2: child },
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      toggleChildInput(false)
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async function editq3() {
+    const access_token: string | null = localStorage.getItem("access_token");
+    try {
+      const response = await axios.patch(
+        "https://yantra-hack.onrender.com/profile",
+        { q3: num },
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      toggleNumInput(false)
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <>
@@ -33,17 +107,26 @@ export default function PerInfo() {
               <input
                 value={pregnant}
                 onChange={(e) => setPregnant(e.target.value)}
-                onBlur={() => togglePregInput(false)}
+                className="cursor-text w-full"
               />
             ) : (
               <p className="text-[#000000CC] font-normal">{pregnant}</p>
             )}
-            <Pencil
-              color="#0C21C1B3"
-              size={20}
-              className="cursor-pointer"
-              onClick={() => togglePregInput(true)}
-            />
+            {pregInput ? (
+              <Check
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => togglePregInput(false)}
+              />
+            ) : (
+              <Pencil
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => togglePregInput(true)}
+              />
+            )}
           </div>
         </div>
         <div className="flex flex-col border-b-[1px] border-[#00000033] w-[45%] py-4">
@@ -53,17 +136,26 @@ export default function PerInfo() {
               <input
                 value={child}
                 onChange={(e) => setChild(e.target.value)}
-                onBlur={() => toggleChildInput(false)}
+                className="cursor-text w-full"
               />
             ) : (
               <p className="text-[#000000CC] font-normal">{child}</p>
             )}
-            <Pencil
-              color="#0C21C1B3"
-              size={20}
-              className="cursor-pointer"
-              onClick={() => toggleChildInput(true)}
-            />
+            {childInput ? (
+              <Check
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => toggleChildInput(false)}
+              />
+            ) : (
+              <Pencil
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => toggleChildInput(true)}
+              />
+            )}
           </div>
         </div>
         <div className="flex flex-col border-b-[1px] border-[#00000033] w-[45%] py-4">
@@ -73,17 +165,26 @@ export default function PerInfo() {
               <input
                 value={num}
                 onChange={(e) => setNum(e.target.value)}
-                onBlur={() => toggleNumInput(false)}
+                className="cursor-text w-full"
               />
             ) : (
               <p className="text-[#000000CC] font-normal">{num}</p>
             )}
-            <Pencil
-              color="#0C21C1B3"
-              size={20}
-              className="cursor-pointer"
-              onClick={() => toggleNumInput(true)}
-            />
+            {numInput ? (
+              <Check
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => toggleNumInput(false)}
+              />
+            ) : (
+              <Pencil
+                color="#0C21C1B3"
+                size={20}
+                className="cursor-pointer"
+                onClick={() => toggleNumInput(true)}
+              />
+            )}
           </div>
         </div>
       </div>

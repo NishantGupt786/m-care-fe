@@ -17,7 +17,7 @@ export default function Account() {
           <div className="flex gap-x-8 text-gray-900">
             <Link href="">Home</Link>
             <Link href="">ChatBot</Link>
-            <Link href="">Forum</Link>
+            <Link href="/forum">Forum</Link>
             <Link href="">Get Help</Link>
             <Link href="">FAQ</Link>
           </div>
