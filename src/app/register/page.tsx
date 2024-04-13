@@ -108,11 +108,6 @@ export default function Register() {
                   className="w-full p-3 text-black pl-4 text-sm"
                 />
               </div>
-              <div className="w-[80%]">
-                <span className="text-red-500">
-                  {touched.name && errors.name}
-                </span>
-              </div>
             </div>
             <div className="flex flex-col pb-6 text-sm">
               <label
@@ -132,6 +127,28 @@ export default function Register() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Enter your email address"
+                  className="w-full p-3 text-black pl-4"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col pb-6 text-sm">
+              <label
+                htmlFor="phoneNo"
+                className={`text-[#999999] ${
+                  touched.phoneNo && errors.phoneNo ? "text-red-500" : ""
+                }`}
+              >
+                Phone Number
+              </label>
+              <div className="flex items-center border-b-2 border-black">
+                <Phone className="text-[#0C21C1] ml-1.5" />
+                <input
+                  name="phoneNo"
+                  type="text"
+                  value={values.phoneNo}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Enter you phone number"
                   className="w-full p-3 text-black pl-4"
                 />
               </div>
@@ -182,28 +199,7 @@ export default function Register() {
                 />
               </div>
             </div>
-            <div className="flex flex-col pb-6 text-sm">
-              <label
-                htmlFor="phoneNo"
-                className={`text-[#999999] ${
-                  touched.phoneNo && errors.phoneNo ? "text-red-500" : ""
-                }`}
-              >
-                Phone Number
-              </label>
-              <div className="flex items-center border-b-2 border-black">
-                <Phone className="text-[#0C21C1] ml-1.5" />
-                <input
-                  name="phoneNo"
-                  type="text"
-                  value={values.phoneNo}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter you phone number"
-                  className="w-full p-3 text-black pl-4"
-                />
-              </div>
-            </div>
+
             <button
               type="submit"
               className="w-full rounded-full py-3 bg-[#0C21C1] mt-8"
