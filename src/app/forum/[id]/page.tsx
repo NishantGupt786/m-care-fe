@@ -195,7 +195,6 @@ export default function Post() {
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
             <Link href="/forum">Forum</Link>
-            
           </div>
           <Link href="/accountinfo">
             <Image src={prof} alt="profile icon" />
@@ -218,6 +217,7 @@ export default function Post() {
               </span>
             </div>
           </div>
+          <Image src={data?.post.image} alt="hello" width={700} height={400} className="my-8" />
           <div className="text-black mt-4">{data?.post.desc}</div>
         </div>
       </div>

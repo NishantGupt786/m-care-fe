@@ -1,11 +1,11 @@
-"use client";
+"use client"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { NotebookPen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.svg";
 import prof from "@/assets/profico.svg";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { NotebookPen } from "lucide-react";
 
 interface ForumResponse {
   title: string;
@@ -17,7 +17,7 @@ interface ForumResponse {
 }
 
 interface ForumResponse2 {
-  posts: [ForumResponse];
+  posts: ForumResponse[];
 }
 
 export default function Forum() {
@@ -33,6 +33,15 @@ export default function Forum() {
     }
     getAllPosts();
   }, []);
+
+  // Function to truncate text
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substring(0, maxLength) + "...";
+  };
+
   return (
     <>
       <div className="flex flex-col bg-white min-h-screen text-black">
@@ -41,7 +50,6 @@ export default function Forum() {
           <div className="flex gap-x-8 text-gray-900">
             <Link href="/landing">Home</Link>
             <Link href="">ChatBot</Link>
-            {/* <Link href="/forum">Forum</Link> */}
           </div>
           <Image src={prof} alt="profile icon" />
         </div>
@@ -76,8 +84,9 @@ export default function Forum() {
                   <h2 className="text-2xl font-semibold">{post.title}</h2>
                 </Link>
                 <div className="flex gap-x-2 items-center">
-                  <p className="font-light georgia w-[70%] truncate">{post.desc}</p>
-
+                  <p className="font-light georgia w-[70%]">
+                    {truncateText(post.desc, 200)}
+                  </p>
                   {post.image && (
                     <div className="mt-2 w-[30%]">
                       <Image
