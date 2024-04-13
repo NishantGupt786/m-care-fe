@@ -75,19 +75,20 @@ export default function Forum() {
                 <Link href={`/forum/${post._id}`}>
                   <h2 className="text-2xl font-semibold">{post.title}</h2>
                 </Link>
+                <div className="flex gap-x-2 items-center">
+                  <p className="font-light georgia w-[70%] truncate">{post.desc}</p>
 
-                <p className="font-light georgia">{post.desc}</p>
-
-                {/* {post.image && (
-                  <div className="mt-2">
-                    <Image
-                      src={post.image}
-                      alt="post image"
-                      width={200}
-                      height={200}
-                    />
-                  </div>
-                )} */}
+                  {post.image && (
+                    <div className="mt-2 w-[30%]">
+                      <Image
+                        src={post.image}
+                        alt="post image"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
         </div>
