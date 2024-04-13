@@ -68,7 +68,7 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        <div className="bg-[#0C21C1CC] flex w-full ">
+        <div className="bg-[#0C21C1CC] flex w-full pb-12">
           <Image src={banner2icon} alt="logo" className="" />
           <div className="flex flex-col">
             <div className="flex flex-col w-[65%]">
@@ -77,29 +77,28 @@ export default function Landing() {
                 Take the first step.
               </p>
             </div>
-            <div className="flex justify-between mr-4 w-full mt-6">
+            <div className="flex gap-x-5 2xl:gap-x-10 w-full mt-6">
               <div className="flex flex-col w-[30%]">
                 <h1 className="text-4xl font-bold">10 lakh+</h1>
                 <p>
                   expectant mothers reaching out to us seek support for managing
-                  anxiety or emotional challenges. You're not alone on this
+                  anxiety or emotional challenges. You&apos;re not alone on this
                   journey.
                 </p>
               </div>
               <div className="flex flex-col w-[30%]">
                 <h1 className="text-4xl font-bold">300+</h1>
                 <p>
-                  expectant mothers reaching out to us seek support for managing
-                  anxiety or emotional challenges. You're not alone on this
-                  journey.
+                  conversations have been participated in by users with out
+                  chatbot.
                 </p>
               </div>
               <div className="flex flex-col w-[30%]">
                 <h1 className="text-4xl font-bold">1 in 3</h1>
                 <p>
-                  expectant mothers reaching out to us seek support for managing
-                  anxiety or emotional challenges. You're not alone on this
-                  journey.
+                  connections forged with local services, such as prenatal care
+                  counseling hotlines, to provide a wide range of support
+                  options for expectant mothers.
                 </p>
               </div>
             </div>
