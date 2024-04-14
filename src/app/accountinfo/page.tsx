@@ -6,6 +6,7 @@ import prof from "@/assets/profico.svg";
 import Link from "next/link";
 import AccInfo from "@/components/accinfo";
 import PerInfo from "@/components/perinfo";
+import MyPosts from "@/components/postinfo";
 
 export default function Account() {
   const [currentPage, setCurrentPage] = useState("Account Information");
@@ -59,6 +60,7 @@ export default function Account() {
             <h1 className="text-3xl">{currentPage}</h1>
             {currentPage === "Account Information" && <AccInfo />}
             {currentPage === "Personal Information" && <PerInfo />}
+            {currentPage === "Your Posts" && <MyPosts />}
           </div>
         </div>
       </div>

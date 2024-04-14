@@ -7,11 +7,43 @@ import icon1 from "@/assets/icon1.svg";
 import icon2 from "@/assets/icon2.svg";
 import icon3 from "@/assets/icon3.svg";
 import banner2icon from "@/assets/banner2icon.png";
+import banner3icon from "@/assets/banner3icon.png";
 import ReactSimplyCarousel from "react-simply-carousel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+interface ForumResponse {
+  title: string;
+  desc: string;
+  image: string;
+  author: string;
+  createdAt: string;
+  _id: string;
+}
+
+interface ForumResponse2 {
+  posts: ForumResponse[];
+}
 
 export default function Landing() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [data, setData] = useState<ForumResponse2 | null>(null);
+
+  useEffect(() => {
+    async function getAllPosts() {
+      const response = await axios.get("http://localhost:5000/forum/posts/all");
+      console.log(response.data);
+      setData(response.data);
+    }
+    getAllPosts();
+  }, []);
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substring(0, maxLength) + "...";
+  };
   return (
     <>
       <div className="flex flex-col bg-white min-h-screen overflow-x-hidden">
@@ -160,7 +192,7 @@ export default function Landing() {
                 comforting and empowering.&quot;
               </h1>
               <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
-                Karan Dugar
+                Nishant Gupta{" "}
               </div>
             </div>
             <div
@@ -173,7 +205,7 @@ export default function Landing() {
                 comforting and empowering.&quot;
               </h1>
               <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
-                Karan Dugar
+                Nishant Gupta{" "}
               </div>
             </div>
             <div
@@ -186,7 +218,7 @@ export default function Landing() {
                 comforting and empowering.&quot;
               </h1>
               <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
-                Karan Dugar
+                Nishant Gupta{" "}
               </div>
             </div>
             <div
@@ -199,10 +231,74 @@ export default function Landing() {
                 comforting and empowering.&quot;
               </h1>
               <div className="bg-[#0C21C1] px-4 py-2 rounded-lg text-white">
-                Karan Dugar
+                Nishant Gupta
               </div>
             </div>
           </ReactSimplyCarousel>
+        </div>
+        <div className="flex flex-col mx-auto mt-12 text-black">
+          <div className="flex items-center">
+            <h1 className="text-3xl font-semibold">Welcome to Our Forum!</h1>
+          </div>
+          <p className="text-[#00000066]">
+            Join our supportive forum for expert advice, shared experiences, and
+            a caring community
+          </p>
+          <p className="text-[#00000066]">
+            to guide you through your pregnancy journey!
+          </p>
+        </div>
+        <div className="mt-8 mx-auto w-[55%] text-black">
+          {data &&
+            data.posts.slice(0, 2).map((post, index) => (
+              <div key={index} className="p-4 m-4 border-b-2">
+                <div className="flex gap-x-6 mb-4 items-center text-[#00000066]">
+                  <Image src={prof} alt="logo" />
+                  <p>{post.author}</p>
+                  <p>{post.createdAt}</p>
+                </div>
+                <Link href={`/forum/${post._id}`}>
+                  <h2 className="text-2xl font-semibold">{post.title}</h2>
+                </Link>
+                <div className="flex gap-x-2 items-center">
+                  <p className="font-light georgia w-[70%]">
+                    {truncateText(post.desc, 200)}
+                  </p>
+                  {post.image && (
+                    <div className="mt-2 w-[30%]">
+                      <Image
+                        src={post.image}
+                        alt="post image"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="mx-auto flex w-[55%] justify-end pr-8 mb-8">
+          <Link href="/forum" className="">
+            <p className="text-[#29292999]">View more</p>
+          </Link>
+        </div>
+        <div className="bg-[#0C21C1CC] flex w-full pb-12 pt-8  justify-evenly items-center">
+          <div className="flex flex-col gap-y-6">
+            <h1 className="text-6xl font-bold">Need Help ?</h1>
+            <p className="text-3xl">
+              Reach out to our helpline for maternal health support.
+            </p>
+            <div className="flex gap-x-4">
+              <div className="bg-[#0C21C1] px-4 py-3 rounded-lg text-xl text-white">
+                Contact Us: +919632766066
+              </div>
+              <div className="bg-[#0C21C1] px-4 py-3 rounded-lg text-white text-xl">
+                Mail Us: helpline@gmail.com
+              </div>
+            </div>
+          </div>
+          <Image src={banner3icon} alt="logo" className="" />
         </div>
       </div>
     </>

@@ -20,12 +20,17 @@ interface ForumResponse2 {
   posts: ForumResponse[];
 }
 
-export default function Forum() {
+export default function MyPosts() {
   const [data, setData] = useState<ForumResponse2 | null>(null);
 
   useEffect(() => {
     async function getAllPosts() {
-      const response = await axios.get("http://localhost:5000/forum/posts/all");
+      const access_token: string | null = localStorage.getItem("access_token");
+      const response = await axios.get("http://localhost:5000/forum/myposts", {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
       console.log(response.data);
       setData(response.data);
     }
@@ -41,36 +46,8 @@ export default function Forum() {
 
   return (
     <>
-      <div className="flex flex-col bg-white min-h-screen text-black">
-        <div className="flex justify-between mt-6 mx-6">
-          <Image src={logo} alt="logo" />
-          <div className="flex gap-x-8 text-gray-900">
-            <Link href="/landing">Home</Link>
-            <Link href="">ChatBot</Link>
-          </div>
-          <Link href="/accountinfo">
-            <Image src={prof} alt="profile icon" />
-          </Link>
-        </div>
-        <div className="flex flex-col mx-auto mt-12">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-semibold">Welcome to Our Forum!</h1>
-            <Link href="/make-post">
-              <span className="flex gap-x-2">
-                <span>Write a post </span>
-                <NotebookPen color="#1024C2" />
-              </span>
-            </Link>
-          </div>
-          <p className="text-[#00000066]">
-            Join our supportive forum for expert advice, shared experiences, and
-            a caring community
-          </p>
-          <p className="text-[#00000066]">
-            to guide you through your pregnancy journey!
-          </p>
-        </div>
-        <div className="mt-8 mx-auto w-[55%]">
+      <div className="flex flex-col bg-white text-black">
+        <div className="mt-8 mx-auto w-full">
           {data &&
             data.posts.map((post, index) => (
               <div key={index} className="p-4 m-4 border-b-2">

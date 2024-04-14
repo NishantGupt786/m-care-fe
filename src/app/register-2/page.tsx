@@ -62,7 +62,7 @@ export default function Register2() {
       console.log(send);
       try {
         const response = await axios.post(
-          "https://yantra-hack.onrender.com/signup",
+          "http://localhost:5000/signup",
           send
         );
         console.log(response);

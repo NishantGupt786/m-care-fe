@@ -45,7 +45,7 @@ export default function MakePost() {
         image: imageBase64,
       };
       const response = await axios.post(
-        "https://yantra-hack.onrender.com/forum/create ",
+        "http://localhost:5000/forum/create ",
         send,
         {
           headers: {

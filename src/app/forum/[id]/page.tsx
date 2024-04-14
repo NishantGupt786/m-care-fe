@@ -77,7 +77,7 @@ export default function Post() {
     }
     try {
       const response = await axios.put(
-        `https://yantra-hack.onrender.com/forum/${id}`,
+        `http://localhost:5000/forum/${id}`,
         {
           comment: commentText,
         },

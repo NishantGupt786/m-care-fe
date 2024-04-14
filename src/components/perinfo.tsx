@@ -23,17 +23,15 @@ export default function PerInfo() {
   const [numInput, toggleNumInput] = useState<boolean>(false);
 
   useEffect(() => {
-    const access_token: string | null = localStorage.getItem("access_token");
     async function getDetails() {
       try {
-        const response = await axios.get(
-          "https://yantra-hack.onrender.com/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
-          }
-        );
+        const access_token: string | null =
+          localStorage.getItem("access_token");
+        const response = await axios.get("http://localhost:5000/profile", {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        });
         console.log(response.data);
         setPregnant(response.data.q1 ? "yes" : "no");
         setChild(response.data.q2 ? "yes" : "no");
@@ -49,7 +47,7 @@ export default function PerInfo() {
     const access_token: string | null = localStorage.getItem("access_token");
     try {
       const response = await axios.patch(
-        "https://yantra-hack.onrender.com/profile",
+        "http://localhost:5000/profile",
         { q1: pregnant },
         {
           headers: {
@@ -57,7 +55,7 @@ export default function PerInfo() {
           },
         }
       );
-      togglePregInput(false)
+      togglePregInput(false);
     } catch (e) {
       console.log(e);
     }
@@ -74,7 +72,7 @@ export default function PerInfo() {
           },
         }
       );
-      toggleChildInput(false)
+      toggleChildInput(false);
     } catch (e) {
       console.log(e);
     }
@@ -91,7 +89,7 @@ export default function PerInfo() {
           },
         }
       );
-      toggleNumInput(false)
+      toggleNumInput(false);
     } catch (e) {
       console.log(e);
     }

@@ -21,7 +21,7 @@ export default function AccInfo() {
     const access_token: string | null = localStorage.getItem("access_token");
     async function getDetails() {
       const response = await axios.get(
-        "https://yantra-hack.onrender.com/profile",
+        "http://localhost:5000/profile",
         {
           headers: {
             Authorization: `Bearer ${access_token}`,

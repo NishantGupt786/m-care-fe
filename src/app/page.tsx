@@ -26,7 +26,7 @@ export default function Login() {
         invalid_type_error: "Password must be a string",
       })
       .regex(
-        /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+        /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z]).{8,}$/,
         "Password should contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character"
       ),
   });
@@ -46,7 +46,7 @@ export default function Login() {
       console.log(send);
       try {
         const response = await axios.post(
-          "https://yantra-hack.onrender.com/login",
+          "http://localhost:5000/login",
           send
         );
         console.log(response);
