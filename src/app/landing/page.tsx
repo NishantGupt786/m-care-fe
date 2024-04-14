@@ -31,7 +31,9 @@ export default function Landing() {
 
   useEffect(() => {
     async function getAllPosts() {
-      const response = await axios.get("http://localhost:5000/forum/posts/all");
+      const response = await axios.get(
+        "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/posts/all"
+      );
       console.log(response.data);
       setData(response.data);
     }

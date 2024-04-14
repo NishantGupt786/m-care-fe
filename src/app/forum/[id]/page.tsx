@@ -77,7 +77,7 @@ export default function Post() {
     }
     try {
       const response = await axios.put(
-        `http://localhost:5000/forum/${id}`,
+        `https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/${id}`,
         {
           comment: commentText,
         },
@@ -217,7 +217,13 @@ export default function Post() {
               </span>
             </div>
           </div>
-          <Image src={data?.post.image} alt="hello" width={700} height={400} className="my-8" />
+          <Image
+            src={data?.post.image}
+            alt="hello"
+            width={700}
+            height={400}
+            className="my-8"
+          />
           <div className="text-black mt-4">{data?.post.desc}</div>
         </div>
       </div>

@@ -27,11 +27,14 @@ export default function PerInfo() {
       try {
         const access_token: string | null =
           localStorage.getItem("access_token");
-        const response = await axios.get("http://localhost:5000/profile", {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
         console.log(response.data);
         setPregnant(response.data.q1 ? "yes" : "no");
         setChild(response.data.q2 ? "yes" : "no");

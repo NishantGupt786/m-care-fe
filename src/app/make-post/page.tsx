@@ -45,7 +45,7 @@ export default function MakePost() {
         image: imageBase64,
       };
       const response = await axios.post(
-        "http://localhost:5000/forum/create ",
+        "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/create ",
         send,
         {
           headers: {
@@ -75,8 +75,12 @@ export default function MakePost() {
         </div>
         <div className="georgia flex flex-col items-center my-8">
           <div className="text-4xl w-[600px] mb-4">
-            
-            <input type="text" value={title} onChange={handleTitleChange} placeholder="Title" />
+            <input
+              type="text"
+              value={title}
+              onChange={handleTitleChange}
+              placeholder="Title"
+            />
           </div>
           <div className="border-2 border-black rounded-md">
             <input
@@ -87,7 +91,6 @@ export default function MakePost() {
             />
           </div>
           <div className="flex flex-col w-[600px] mt-4">
-            
             <textarea
               value={description}
               rows={5}
@@ -97,7 +100,10 @@ export default function MakePost() {
             />
           </div>
 
-          <button onClick={handleSubmit} className="bg-[#0C21C1] py-2 px-4 mt-4 rounded-lg text-white">
+          <button
+            onClick={handleSubmit}
+            className="bg-[#0C21C1] py-2 px-4 mt-4 rounded-lg text-white"
+          >
             Submit
           </button>
         </div>

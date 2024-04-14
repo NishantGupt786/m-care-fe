@@ -46,7 +46,7 @@ export default function Login() {
       console.log(send);
       try {
         const response = await axios.post(
-          "http://localhost:5000/login",
+          "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/login",
           send
         );
         console.log(response);
