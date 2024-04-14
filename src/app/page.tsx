@@ -128,7 +128,7 @@ export default function Login() {
               type="submit"
               className="w-full rounded-full py-3 bg-[#0C21C1] mt-8 text-sm"
             >
-              Login
+              Logins
             </button>
           </form>
         </div>
