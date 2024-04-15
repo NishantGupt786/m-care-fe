@@ -45,7 +45,7 @@ export default function MakePost() {
         image: imageBase64,
       };
       const response = await axios.post(
-        "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/create ",
+        "http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/create ",
         send,
         {
           headers: {

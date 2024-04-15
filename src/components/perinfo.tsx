@@ -28,7 +28,7 @@ export default function PerInfo() {
         const access_token: string | null =
           localStorage.getItem("access_token");
         const response = await axios.get(
-          "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/profile",
+          "http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/profile",
           {
             headers: {
               Authorization: `Bearer ${access_token}`,

@@ -27,7 +27,7 @@ export default function MyPosts() {
     async function getAllPosts() {
       const access_token: string | null = localStorage.getItem("access_token");
       const response = await axios.get(
-        "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/myposts",
+        "http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/myposts",
         {
           headers: {
             Authorization: `Bearer ${access_token}`,

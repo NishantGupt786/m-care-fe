@@ -77,7 +77,7 @@ export default function Post() {
     }
     try {
       const response = await axios.put(
-        `https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/${id}`,
+        `http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/${id}`,
         {
           comment: commentText,
         },

@@ -62,7 +62,7 @@ export default function Register2() {
       console.log(send);
       try {
         const response = await axios.post(
-          "https://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/signup",
+          "http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/signup",
           send
         );
         console.log(response);
