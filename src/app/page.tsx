@@ -10,6 +10,7 @@ import { Mail, Route } from "lucide-react";
 import { Lock } from "lucide-react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const Router = useRouter();
@@ -51,9 +52,13 @@ export default function Login() {
         );
         console.log(response);
         localStorage.setItem("access_token", response.data.accessToken);
-        Router.push("/forum");
-      } catch (e) {
+        toast.success("Login Successful");
+        setTimeout(() => {
+          Router.push("/landing");
+        }, 1000);
+      } catch (e: any) {
         console.log(e);
+        toast.error(e.response.data.message || "Something went wrong");
       }
     },
   });

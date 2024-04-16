@@ -44,7 +44,7 @@ export default function Post() {
     async function getPost() {
       try {
         const response = await axios.get(
-          `https://yantra-hack.onrender.com/forum/${id}`
+          `http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/${id}`
         );
         setData(response.data);
       } catch (e) {
@@ -224,7 +224,7 @@ export default function Post() {
             height={400}
             className="my-8"
           />
-          <div className="text-black mt-4">{data?.post.desc}</div>
+          <div className="text-black mt-4 text-lg mb-8">{data?.post.desc}</div>
         </div>
       </div>
     </>

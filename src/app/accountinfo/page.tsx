@@ -12,7 +12,7 @@ export default function Account() {
   const [currentPage, setCurrentPage] = useState("Account Information");
   return (
     <>
-      <div className="flex flex-col bg-white h-screen">
+      <div className="flex flex-col bg-white h-screen overflow-x-hidden">
         <div className="flex justify-between mt-6 mx-6">
           <Image src={logo} alt="logo" />
           <div className="flex gap-x-8 text-gray-900">
@@ -23,7 +23,7 @@ export default function Account() {
           </div>
           <Image src={prof} alt="profile icon" />
         </div>
-        <div className="flex mt-6 w-screen">
+        <div className="flex mt-6 w-screen h-full">
           <div className="w-[25vw] text-black text-center">
             <div
               className={`cursor-pointer p-5 self-center hover:bg-[#D9D9D980] hover:border-l-2 hover:border-[#0C21C1] ${

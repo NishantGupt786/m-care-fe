@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.svg";
 import prof from "@/assets/profico.svg";
+import toast from "react-hot-toast";
 
 export default function MakePost() {
   const Router = useRouter();
@@ -13,7 +14,7 @@ export default function MakePost() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imageBase64, setImageBase64] = useState("");
-
+  const [file, setFile] = useState<string | undefined>(undefined);
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
   };
@@ -24,9 +25,12 @@ export default function MakePost() {
 
   const handleImageChange = (e: any) => {
     const selectedImage = e.target.files[0];
+    if (selectedImage) {
+      const imageUrl = URL.createObjectURL(selectedImage);
+      setFile(imageUrl);
+    }
     setImage(selectedImage);
 
-    // Read image file as base64
     const reader = new FileReader();
     reader.onloadend = () => {
       if (typeof reader.result === "string") {
@@ -55,9 +59,13 @@ export default function MakePost() {
       );
 
       console.log(response.data);
-      Router.push("/forum");
-    } catch (error) {
+      toast.success("Post submitted successfully");
+      setTimeout(() => {
+        Router.push("/forum");
+      }, 1000);
+    } catch (error: any) {
       console.error("Error submitting post:", error);
+      toast.error(error.response.data.message || "Something went wrong");
     }
   };
 
@@ -80,15 +88,45 @@ export default function MakePost() {
               value={title}
               onChange={handleTitleChange}
               placeholder="Title"
+              className="w-full"
             />
           </div>
           <div className="border-2 border-black rounded-md">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="w-[600px] h-[300px]"
-            />
+            <div className="relative w-[600px] h-[300px] overflow-hidden">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-[100]"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-700">
+                {file ? (
+                  <img
+                    src={file}
+                    alt="Uploaded Image"
+                    className="max-w-full max-h-full"
+                  />
+                ) : (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-8 w-8 mr-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                    <span>Upload an image</span>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
           <div className="flex flex-col w-[600px] mt-4">
             <textarea

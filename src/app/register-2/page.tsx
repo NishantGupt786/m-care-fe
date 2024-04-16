@@ -10,6 +10,7 @@ import mascot from "@/assets/mascot.png";
 import { CircleHelp } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Register2() {
   const Router = useRouter();
@@ -66,9 +67,13 @@ export default function Register2() {
           send
         );
         console.log(response);
-        Router.push("/");
-      } catch (e) {
+        toast.success("Registration Successful");
+        setTimeout(() => {
+          Router.push("/");
+        }, 1000);
+      } catch (e: any) {
         console.log(e);
+        toast.error(e.response.data.message || "Something went wrong");
       }
     },
   });

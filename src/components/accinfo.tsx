@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useProfileStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 interface profResponse {
   name: string;
@@ -16,9 +16,13 @@ interface profResponse {
 
 export default function AccInfo() {
   const [details, setDetails] = useState<profResponse | undefined>(undefined);
+  const Router = useRouter();
 
   useEffect(() => {
     const access_token: string | null = localStorage.getItem("access_token");
+    if(!access_token) {
+      Router.push("/");
+    };
     async function getDetails() {
       const response = await axios.get(
         "http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/profile",
