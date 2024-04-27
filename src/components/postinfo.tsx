@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.svg";
 import prof from "@/assets/profico.svg";
+import { Trash2 } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface ForumResponse {
   title: string;
@@ -40,6 +42,28 @@ export default function MyPosts() {
     getAllPosts();
   }, []);
 
+  async function deletePost(id: string) {
+    try {
+      const access_token: string | null = localStorage.getItem("access_token");
+      const response = await axios.delete(
+        `http://ec2-3-110-176-87.ap-south-1.compute.amazonaws.com:8080/forum/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        }
+      );
+      setData((prevData) => ({
+        ...prevData,
+        posts: prevData!.posts.filter((post) => post._id !== id),
+      }));
+      toast.success(`Post with id:${id} was deleted successfully`);
+    } catch (e) {
+      console.log(e);
+      toast.error("Something went wrong!");
+    }
+  }
+
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) {
       return text;
@@ -58,6 +82,10 @@ export default function MyPosts() {
                   <Image src={prof} alt="logo" />
                   <p>{post.author}</p>
                   <p>{post.createdAt}</p>
+                  <Trash2
+                    onClick={() => deletePost(post._id)}
+                    className="cursor-pointer"
+                  />
                 </div>
                 <Link href={`/forum/${post._id}`}>
                   <h2 className="text-2xl font-semibold">{post.title}</h2>
